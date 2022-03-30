@@ -16,7 +16,8 @@ public class SwaggerController {
     private final DiscoveryClient discoveryClient;
 
     // Services to exclude. You can modify this list as per your environment
-    private static final List<String> KUBE_SERVICES = Arrays.asList("kubernetes", "kube-dns", "prometheus-kube-prometheus-kubelet");
+//    private static final List<String> KUBE_SERVICES = Arrays.asList("kubernetes", "kube-dns", "prometheus-kube-prometheus-kubelet");
+    private static final List<String> KUBE_SERVICES = Arrays.asList("kubernetes");
 
     public SwaggerController(final DiscoveryClient discoveryClient) {
         this.discoveryClient = discoveryClient;
@@ -28,7 +29,9 @@ public class SwaggerController {
         String url = new URI(uri.getScheme(), uri.getAuthority(), null, null, null).toString();
         Map<String, Object> swaggerConfig = new LinkedHashMap<>();
         List<AbstractSwaggerUiConfigProperties.SwaggerUrl> swaggerUrls = new LinkedList<>();
-        System.out.println("Services = " + discoveryClient.getServices());
+        
+        System.out.println("=================>>>>>> Services = " + discoveryClient.getServices());
+        
         discoveryClient.getServices().stream().filter(s -> !KUBE_SERVICES.contains(s)).forEach(serviceName ->
                         swaggerUrls.add(new AbstractSwaggerUiConfigProperties.SwaggerUrl(serviceName,
                                 url + "/" + serviceName + "/v3/api-docs")));
