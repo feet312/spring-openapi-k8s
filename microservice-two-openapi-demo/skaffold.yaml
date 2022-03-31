@@ -18,9 +18,9 @@ profiles:
         manifests:
          
           - k8s/dev/apidoc-*.yaml 
-portForward:
-   - resourceType: Service
-     resourceName: microservicetwo-service
-     namespace: apidoc-aggregator
-     port: 8080
-     localPort: 8082 # *Optional*
+    portForward:
+     - resourceType: Service
+       resourceName: microservicetwo-service
+       namespace: apidoc-aggregator
+       port: 8080
+       localPort: 8082 # *Optional*

@@ -1,4 +1,4 @@
-package com.microservice.one.microserviceone;
+package com.kt.icistr.svc.two;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class MyController {
 
-    @GetMapping("/hello-one")
+    @GetMapping("/hello-two")
     public String hello(@RequestParam(required = false) String id) {
-        return "Hello " + (id == null ? "World" : id) + " from One!!!!";
+        return "Hello " + (id == null ? "World" : id) + " from Two!!!!";
     }
 }

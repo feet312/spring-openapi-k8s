@@ -3,25 +3,26 @@ spring:
     name: commonui
   cloud:
     kubernetes:
-      config:
-        paths: /
+#      config:
+#        paths: /etc/config/configMap.yaml
       discovery:
         enabled: true
         all-namespaces: true
     gateway:
       routes:
         - id: microserviceone
-          uri: http://microserviceone:8081
+          uri: http://microserviceone-service.apidoc-aggregator:8080
           predicates:
-            - Path=/microserviceone/**
+            - Path=/microserviceone-service/**
           filters:
-            - RewritePath=/microserviceone(?<segment>/?.*), $\{segment}
+            - RewritePath=/microserviceone-service/(?<segment>/?.*), /$\{segment}
+        
         - id: microservicetwo
-          uri: http://microservicetwo:8082
+          uri: http://microservicetwo-service.apidoc-aggregator:8080
           predicates:
-            - Path=/microservicetwo/**
+            - Path=/microservicetwo-service/**
           filters:
-            - RewritePath=/microservicetwo(?<segment>/?.*), $\{segment}
+            - RewritePath=/microservicetwo-service/(?<segment>/?.*), /$\{segment}
 
 server:
   forward-headers-strategy: framework

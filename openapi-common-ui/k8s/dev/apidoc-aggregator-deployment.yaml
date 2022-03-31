@@ -22,6 +22,14 @@ spec:
         ports: 
         - name: http
           containerPort: 8080
+#        volumeMounts:
+#          - name: commonui-config
+#            mountPath: /etc/config/configMap.yaml
+#      volumes:
+#        - name: commonui-config
+#          hostPath: 
+#            path: /Users/sehwan/ICIS-TR/spring-openapi-k8s/openapi-common-ui/src/main/resources/configMap.yaml
+          
 --- 
 apiVersion: v1
 kind: Service
@@ -38,3 +46,34 @@ spec:
       targetPort: http
       # nodePort: 32180
 ---
+#apiVersion: rbac.authorization.k8s.io/v1
+#kind: Role
+#metadata:
+#  namespace: apidoc-aggregator
+#  name: namespace-reader
+#rules:
+#  - apiGroups: ["", "extensions", "apps"]
+#    resources: ["configmaps", "pods", "services", "endpoints", "secrets"]
+#    verbs: ["get", "list", "watch"]
+#
+#---
+#
+#apiVersion: rbac.authorization.k8s.io/v1
+#kind: RoleBinding
+#metadata:
+#  name: namespace-reader-binding
+#  namespace: apidoc-aggregator
+#subjects:
+#- kind: ServiceAccount
+#  name: default
+##  name: dev
+#  apiGroup: ""
+#roleRef:
+#  kind: Role
+#  name: namespace-reader
+#  apiGroup: ""
+#  
+#---
+
+  
+  

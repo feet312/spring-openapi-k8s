@@ -1,13 +1,13 @@
-package com.microservice.two.microservicetwo;
+package com.kt.icistr.svc.one;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MicroservicetwoApplication {
+public class MicroserviceoneApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MicroservicetwoApplication.class, args);
+		SpringApplication.run(MicroserviceoneApplication.class, args);
 	}
 
 }
